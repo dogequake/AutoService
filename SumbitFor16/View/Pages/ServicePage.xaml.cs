@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SumbitFor16.Models;
 
 namespace SumbitFor16.View.Pages
 {
@@ -20,12 +21,27 @@ namespace SumbitFor16.View.Pages
     /// </summary>
     public partial class ServicePage : Page
     {
+        Core db = new Core();
+        List<Service> arrayService;
+        
         public ServicePage()
         {
             InitializeComponent();
+            arrayService = db.context.Service.ToList();
+            LViewServices.ItemsSource = arrayService; 
         }
 
         private void BtnAddServiceClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnEditClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnDeleteClick(object sender, RoutedEventArgs e)
         {
 
         }

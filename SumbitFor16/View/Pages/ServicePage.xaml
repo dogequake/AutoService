@@ -16,12 +16,57 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
-        <ListView Grid.Row="2" Name="LViewServices"></ListView>
+        <ListView Grid.Row="2" Name="LViewServices"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal"
+                               HorizontalAlignment="Center">
+                    </WrapPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="{StaticResource MainColor}"
+                            CornerRadius="15" Padding="5"
+                            Background="{Binding BackColor}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding ServicePhoto.MainImage}" Width="100"/>
+                            <StackPanel Grid.Column="1">
+                                <TextBlock Style="{StaticResource BlockCommon}" Width="Auto" Text="{Binding Title}" HorizontalAlignment="Left"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Width="auto"
+                                               Style="{StaticResource BlockCommon}"
+                                               Text="{Binding Cost, StringFormat=N2}"
+                                               Visibility="{Binding DiscountVisibility}"
+                                               TextDecorations="Strikethrough"/>
+                                    <TextBlock Width="auto"
+                                               Style="{StaticResource BlockCommon}"
+                                               Text="{Binding TotalCost}"/>
+                                </StackPanel>
+                                <TextBlock Width="auto"
+                                           Style="{StaticResource BlockCommon}"
+                                           FontSize="12"
+                                           Text="{Binding DiscountText}"
+                                           Visibility="{Binding DiscountVisibility}"
+                                           HorizontalAlignment="Left"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Content="Редактировать" Name="BtnEdit" Click="BtnEditClick"/>
+                                    <Button Content="Удалить" Name="BtnDelete" Click="BtnDeleteClick"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
         <Button Grid.Row="3" HorizontalAlignment="Right"
                 Name="BtnAddService" Click="BtnAddServiceClick"
                 Content="Добавить услугу"></Button>
-        <!--Остановились на ListView Задание 3-->
-        
     </Grid>
 </Page>

@@ -64,6 +64,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\PartialClass\ServicePartial.cs" />
     <Compile Include="View\Pages\AddEditServicePage.xaml.cs">
       <DependentUpon>AddEditServicePage.xaml</DependentUpon>
     </Compile>
@@ -187,12 +188,28 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\Fonts\" />
-    <Folder Include="Models\PartialClass\" />
     <Folder Include="ViewModel\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Images\service_logo.ico" />
     <Resource Include="Assets\Images\service_logo.png" />
+    <Resource Include="Assets\Images\SERVICES\diz.jpg" />
+    <Resource Include="Assets\Images\SERVICES\rulevoe-upravlenie-avtomobilya.jpg" />
+    <Resource Include="Assets\Images\SERVICES\transmission.jpg" />
+    <Resource Include="Assets\Images\SERVICES\АКПП.jpg" />
+    <Resource Include="Assets\Images\SERVICES\Вариатор.jpg" />
+    <Resource Include="Assets\Images\SERVICES\Выхлопная система.jpg" />
+    <Resource Include="Assets\Images\SERVICES\ГУР.png" />
+    <Resource Include="Assets\Images\SERVICES\Двигатель.png" />
+    <Resource Include="Assets\Images\SERVICES\Дополнительные услуги.png" />
+    <Resource Include="Assets\Images\SERVICES\Кондиционер.jpg" />
+    <Resource Include="Assets\Images\SERVICES\КПП.png" />
+    <Resource Include="Assets\Images\SERVICES\Подвеска.png" />
+    <Resource Include="Assets\Images\SERVICES\Сцепление.jpg" />
+    <Resource Include="Assets\Images\SERVICES\Техническое обслуживание.png" />
+    <Resource Include="Assets\Images\SERVICES\Топливная система.png" />
+    <Resource Include="Assets\Images\SERVICES\Шиномонтаж.jpg" />
+    <Resource Include="Assets\Images\SERVICES\Электрика.png" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
