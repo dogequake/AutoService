@@ -49,18 +49,24 @@ namespace SumbitFor16.Models
         {
             get
             {
+                DurationInSeconds = DurationInSeconds.TrimEnd().TrimStart();
                 string[] vs = DurationInSeconds.Split(new char[] { ' ' });
-                if (vs[1] == "мин.") 
+                int minut = Convert.ToInt32(vs[0]);
+                if (vs[1] == "мин.")
                 {
-                    int minut = Convert.ToInt32(vs[0]) * 60;
+                    minut = Convert.ToInt32(vs[0]) / 60;
+                }
+                else 
+                {
+
                 }
                 if (Discount == 0 || Discount == null)
                 {
-                    return $"{Cost:N2} рублей за {} минут";
+                    return $"{Cost:N2} рублей за {minut} минут";
                 }
                 else
                 {
-                    return $"{CostWithDiscount:N2} рублей за {} минут";
+                    return $"{CostWithDiscount:N2} рублей за {minut} минут";
                 }
             }
         }

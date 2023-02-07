@@ -9,6 +9,14 @@
       Title="Подай на 16">
 
     <Grid>
-        
+        <Button x:Name="BtnSelectImage" Click="BtnSelectImageClick" HorizontalAlignment="Left" Margin="50,365,0,0" VerticalAlignment="Top" Width="200" Height="40" Content="Выбор изображения&#xD;&#xA;"/>
+        <TextBox x:Name="TBoxTitle" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Title" VerticalAlignment="Top" Width="120" Margin="29,10,0,0"/>
+        <TextBox x:Name="TBoxCost" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Cost" VerticalAlignment="Top" Width="120" Margin="29,52,0,0"/>
+        <TextBox x:Name="TBoxDuration" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Duration" VerticalAlignment="Top" Width="120" Margin="29,93,0,0"/>
+        <TextBox x:Name="TBoxDescription" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top" Width="120" Margin="29,134,0,0"/>
+        <TextBox x:Name="TBoxDiscount" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Discount" VerticalAlignment="Top" Width="120" Margin="29,175,0,0"/>
+
+
+
     </Grid>
 </Page>

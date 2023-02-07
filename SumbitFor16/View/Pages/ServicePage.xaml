@@ -16,6 +16,22 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <ComboBox Margin="5" Width="150" Name="ComboSortBy" SelectionChanged="ComboSortBySelectionChanged">
+                <ComboBoxItem Content="По возрастанию цены"></ComboBoxItem>
+                <ComboBoxItem Content="По убыванию цены"></ComboBoxItem>
+            </ComboBox>
+            <ComboBox Margin="5" Width="150" Name="ComboDiscount" SelectionChanged="ComboDiscountSelectionChanged">
+                <ComboBoxItem Content="Все"></ComboBoxItem>
+                <ComboBoxItem Content="От 0% до 5%"></ComboBoxItem>
+                <ComboBoxItem Content="От 5% до 15%"></ComboBoxItem>
+                <ComboBoxItem Content="От 15% до 30%"></ComboBoxItem>
+                <ComboBoxItem Content="От 30% до 70%"></ComboBoxItem>
+                <ComboBoxItem Content="От 70% до 100%"></ComboBoxItem>
+            </ComboBox>
+            <TextBox Name="TBoxSearch" Width="150" Margin="5" TextChanged="TBoxSearchTextChanged"/>
+        </StackPanel>
+        <TextBlock Grid.Row="1" Style="{StaticResource BlockCommon}" Width="auto" FontWeight="Bold" Name="BlockRecords"/>
         <ListView Grid.Row="2" Name="LViewServices"
             ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListView.ItemsPanel>
@@ -35,7 +51,9 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
+                            
                             <Image Source="{Binding ServicePhoto.MainImage}" Width="100"/>
+                            
                             <StackPanel Grid.Column="1">
                                 <TextBlock Style="{StaticResource BlockCommon}" Width="Auto" Text="{Binding Title}" HorizontalAlignment="Left"/>
                                 <StackPanel Orientation="Horizontal">
