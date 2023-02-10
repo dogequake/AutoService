@@ -66,7 +66,7 @@ namespace SumbitFor16.View.Pages
         
         private void BtnAddServiceClick(object sender, RoutedEventArgs e)
         {
-
+            this.NavigationService.Navigate(new AddEditServicePage());
         }
 
         private void BtnEditClick(object sender, RoutedEventArgs e)
