@@ -32,6 +32,15 @@ namespace SumbitFor16.View.Pages
 
             ComboDiscount.SelectedIndex = 0;
             ComboSortBy.SelectedIndex = 0;
+            //1-admin 2-user
+            if (App.CurrentUser.RoleId == 1)
+            {
+                BtnAddService.Visibility = Visibility.Visible;
+            }
+            else 
+            {
+                BtnAddService.Visibility = Visibility.Hidden;
+            }
             UpdateService();
         }
 

@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using SumbitFor16.Models;
 
 namespace SumbitFor16
 {
@@ -13,6 +14,6 @@ namespace SumbitFor16
     /// </summary>
     public partial class App : Application
     {
-        internal static object Context;
+        public static Models.User CurrentUser = null;
     }
 }

@@ -6,9 +6,19 @@
       xmlns:local="clr-namespace:SumbitFor16.View.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Подай на 16">
+      Title="Авторизация">
 
     <Grid>
-        
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Style="{StaticResource BlockCommon}" Text="Логин: "></TextBlock>
+                <TextBox Name="TBoxLogin" ></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Style="{StaticResource BlockCommon}" Text="Пароль: "></TextBlock>
+                <PasswordBox Name="PBoxPassword" ></PasswordBox>
+            </StackPanel>
+            <Button Name="BtnLogin" Click="BtnLoginClick" Content="Войти" HorizontalAlignment="Right"></Button>
+        </StackPanel>
     </Grid>
 </Page>

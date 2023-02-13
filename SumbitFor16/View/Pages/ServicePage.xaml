@@ -73,8 +73,8 @@
                                            Visibility="{Binding DiscountVisibility}"
                                            HorizontalAlignment="Left"/>
                                 <StackPanel Orientation="Horizontal">
-                                    <Button Content="Редактировать" Name="BtnEdit" Click="BtnEditClick"/>
-                                    <Button Content="Удалить" Name="BtnDelete" Click="BtnDeleteClick"/>
+                                    <Button Content="Редактировать" Name="BtnEdit" Click="BtnEditClick" Visibility="{Binding AdminControlsVisibility}"/>
+                                    <Button Content="Удалить" Name="BtnDelete" Click="BtnDeleteClick" Visibility="{Binding AdminControlsVisibility}"/>
                                 </StackPanel>
                             </StackPanel>
                         </Grid>

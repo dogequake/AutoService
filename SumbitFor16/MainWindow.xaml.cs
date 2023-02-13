@@ -24,7 +24,7 @@ namespace SumbitFor16
         public MainWindow()
         {
             InitializeComponent();
-            FrameMain.Navigate(new ServicePage());
+            FrameMain.Navigate(new LoginPage());
         }
 
 
