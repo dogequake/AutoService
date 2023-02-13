@@ -11,11 +11,11 @@
     <Grid>
         <StackPanel>
       
-        <TextBox x:Name="TBoxTitle" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Title" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="TBoxCost" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Cost" VerticalAlignment="Top" Width="120" />
-        <TextBox x:Name="TBoxDuration" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Duration" VerticalAlignment="Top" Width="120" />
-        <TextBox x:Name="TBoxDescription" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top" Width="120" Margin="29,134,0,0"/>
-        <TextBox x:Name="TBoxDiscount" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Discount" VerticalAlignment="Top" Width="120" />
+        <TextBox x:Name="TBoxTitle" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TBoxCost" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" />
+        <TextBox x:Name="TBoxDuration" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" />
+        <TextBox x:Name="TBoxDescription" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Margin="29,134,0,0"/>
+        <TextBox x:Name="TBoxDiscount" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" />
             <StackPanel>
                 <Image Source="{Binding ServicePhoto.MainImage}" Width="100"/>
                 <Image x:Name="ImageService"/>

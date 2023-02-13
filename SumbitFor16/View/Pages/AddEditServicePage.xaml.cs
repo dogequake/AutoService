@@ -2,6 +2,7 @@
 using SumbitFor16.Models;
 using System;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -14,6 +15,7 @@ namespace SumbitFor16.View.Pages
     /// </summary>
     public partial class AddEditServicePage : Page
     {
+        int imageId;
         private Service _currentService = null;
         Core db = new Core();
         private byte[] _mainImageData;
@@ -42,7 +44,7 @@ namespace SumbitFor16.View.Pages
                 newfilename = appFolderPath + newfilename + imageName;
                 if (File.Exists($"{AppDomain.CurrentDomain.BaseDirectory}\\..\\..\\Assets\\Images\\SERVICES\\{System.IO.Path.GetFileName(ofd.FileName)}"))
                 {
-                    MessageBox.Show("Нашел");
+                    imageId = db.context.ServicePhoto.FirstOrDefault(x => x.PhotoPath.Contains(System.IO.Path.GetFileName(ofd.FileName))).ID;
                 }
                 else
                 {
@@ -51,18 +53,20 @@ namespace SumbitFor16.View.Pages
                     {
                         PhotoPath = $"SERVICES/{System.IO.Path.GetFileName(ofd.FileName)}"
                     };
-                    MessageBox.Show("Жесть");
+                    db.context.ServicePhoto.Add(photo);
+                   // MessageBox.Show("Жесть");
                     db.context.SaveChanges();
+                    imageId = photo.ID;
                 }
                 var service = new Service
                 {
                     Title = TBoxTitle.Text,
-                    Cost = decimal.Parse(TBoxCost.Text),
-                    DurationInSeconds = Convert.ToString(int.Parse(TBoxDuration.Text) * 60),
+                   // Cost = decimal.Parse(TBoxCost.Text),
+                    Cost = 0,
+                    DurationInSeconds = $"{int.Parse(TBoxDuration.Text) * 60} мин.",
                     Description = TBoxDescription.Text,
-                    Discount = string.IsNullOrWhiteSpace(TBoxDiscount.Text)
-                    ? 0 : double.Parse(TBoxDiscount.Text) / 100,
-                    MainImagePath = 1
+                   // Discount = string.IsNullOrWhiteSpace(TBoxDiscount.Text)? 0 : double.Parse(TBoxDiscount.Text) / 100,
+                    MainImagePath = imageId
                 };
                 db.context.Service.Add(service);
                 db.context.SaveChanges();
