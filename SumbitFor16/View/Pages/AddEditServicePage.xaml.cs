@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 
 namespace SumbitFor16.View.Pages
@@ -19,9 +20,23 @@ namespace SumbitFor16.View.Pages
         private Service _currentService = null;
         Core db = new Core();
         private byte[] _mainImageData;
-        public AddEditServicePage()
+        public AddEditServicePage(Service currentService)
         {
             InitializeComponent();
+            _currentService = currentService;
+            if (currentService!=null)
+            {
+                TBoxTitle.Text = _currentService.Title;
+                TBoxCost.Text = Convert.ToString(_currentService.Cost);
+                TBoxDiscount.Text = Convert.ToString(_currentService.Discount);
+                TBoxDescription.Text = _currentService.Description;
+                TBoxDuration.Text = _currentService.DurationInSeconds;
+                string path = db.context.ServicePhoto.FirstOrDefault(x => x.ID == _currentService.MainImagePath).PhotoPath;
+                Uri AddEditPhoto = new Uri(path);
+
+                ServiceImage.Source = new BitmapImage(AddEditPhoto);
+            }
+          
         }
         private void BtnSelectImageClick(object sender, RoutedEventArgs e)
         {
@@ -35,16 +50,20 @@ namespace SumbitFor16.View.Pages
             if (_currentService == null)
             {
                 string newfilename = "\\Assets\\Images\\SERVICES\\";
-
                 string appFolderPath = Directory.GetCurrentDirectory();
                 appFolderPath = appFolderPath.Replace("\\bin\\Debug", "");//обрезанный путь
-
                 string imageName = System.IO.Path.GetFileName(ofd.FileName);//имя картинки с расширением
-
                 newfilename = appFolderPath + newfilename + imageName;
+
                 if (File.Exists($"{AppDomain.CurrentDomain.BaseDirectory}\\..\\..\\Assets\\Images\\SERVICES\\{System.IO.Path.GetFileName(ofd.FileName)}"))
                 {
-                    imageId = db.context.ServicePhoto.FirstOrDefault(x => x.PhotoPath.Contains(System.IO.Path.GetFileName(ofd.FileName))).ID;
+                    string name = System.IO.Path.GetFileName(ofd.FileName);
+                    ServicePhoto selectedImage = db.context.ServicePhoto.FirstOrDefault(x => x.PhotoPath.Contains(name));
+                    if (selectedImage!=null)
+                    {
+                        imageId = selectedImage.ID;
+                    }
+                   
                 }
                 else
                 {

@@ -19,8 +19,8 @@
         <Image Source="Assets/Images/service_logo.png"
                Width="100" HorizontalAlignment="Left"></Image>
         <Button Name="BtnBack" Click="BtnBackClick"/>
-        <TextBlock Text="{Binding ElementName=FrameMain, Path=Content}"
+        <TextBlock Text="{Binding ElementName=FrameMain, Path=Content.Title}"
                    Style="{StaticResource BlockHeader}"/>
-        <Frame x:Name="FrameMain" NavigationUIVisibility="Hidden" Grid.Row="1"/>
+        <Frame Navigated="FrameMainNavigated" x:Name="FrameMain" NavigationUIVisibility="Hidden" Grid.Row="1"/>
     </Grid>
 </Window>

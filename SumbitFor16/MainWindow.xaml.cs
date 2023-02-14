@@ -39,5 +39,16 @@ namespace SumbitFor16
                 FrameMain.GoBack();
 
         }
+        private void FrameMainNavigated(object sender, NavigationEventArgs e)
+        {
+            if (!FrameMain.CanGoBack)
+            {
+                BtnBack.Visibility = Visibility.Collapsed;
+            }
+            else 
+            {
+                BtnBack.Visibility = Visibility.Visible;
+            }
+        }
     }
 }

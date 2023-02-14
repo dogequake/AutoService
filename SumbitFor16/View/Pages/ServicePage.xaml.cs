@@ -75,12 +75,15 @@ namespace SumbitFor16.View.Pages
         
         private void BtnAddServiceClick(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new AddEditServicePage());
+            Service activeService = null;
+            this.NavigationService.Navigate(new AddEditServicePage(activeService));
         }
 
         private void BtnEditClick(object sender, RoutedEventArgs e)
         {
-
+            Button activeButton = sender as Button;
+            Service activeService = activeButton.DataContext as Service;
+            this.NavigationService.Navigate(new AddEditServicePage(activeService));
         }
 
         private void BtnDeleteClick(object sender, RoutedEventArgs e)

@@ -10,14 +10,14 @@
 
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Style="{StaticResource BlockCommon}" Text="Логин: "></TextBlock>
-                <TextBox Name="TBoxLogin" ></TextBox>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
+            <UniformGrid >
+                <TextBlock Style="{StaticResource BlockCommon}" Text="Логин: " ></TextBlock>
+                <TextBox Name="TBoxLogin">admin1</TextBox>
+            </UniformGrid>
+            <UniformGrid >
                 <TextBlock Style="{StaticResource BlockCommon}" Text="Пароль: "></TextBlock>
                 <PasswordBox Name="PBoxPassword" ></PasswordBox>
-            </StackPanel>
+            </UniformGrid>
             <Button Name="BtnLogin" Click="BtnLoginClick" Content="Войти" HorizontalAlignment="Right"></Button>
         </StackPanel>
     </Grid>
