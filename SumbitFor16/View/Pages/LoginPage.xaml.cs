@@ -46,5 +46,10 @@ namespace SumbitFor16.View.Pages
                 MessageBox.Show("НЕт аакаунта с таким логинам");
             }
         }
+
+        private void BtnRegClick(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new RegPage());
+        }
     }
 }

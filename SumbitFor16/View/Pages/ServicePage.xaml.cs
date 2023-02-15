@@ -88,7 +88,26 @@ namespace SumbitFor16.View.Pages
 
         private void BtnDeleteClick(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                Button selectedButton = (Button)sender;
+                Service item = selectedButton.DataContext as Service;
 
+                MessageBoxResult result = MessageBox.Show("Вы действительно хотите удалить?", "Удаление", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    db.context.Service.Remove(item);
+                    db.context.SaveChanges();
+                    MessageBox.Show("Данные удалены");
+                }
+
+                //обновление DataGrid
+                LViewServices.ItemsSource = db.context.Service.ToList();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Данные не удалены. ");
+            }
         }
 
         private void ComboSortBySelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.IO;
 
 namespace SumbitFor16.Models
 {
     public partial class ServicePhoto 
     {
-        public string MainImage
+        public byte[] MainImage
         { get 
             {
-                return "..\\..\\Assets\\Images\\" + PhotoPath;
+                return File.ReadAllBytes($"{Directory.GetCurrentDirectory()}\\..\\..\\Assets\\Images\\{PhotoPath}");
             } }
     }
 

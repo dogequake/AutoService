@@ -9,21 +9,41 @@
       Title="Добавление/Редактирование">
 
     <Grid>
-        <UniformGrid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <UniformGrid Grid.Column="1" Columns="1">
+            <StackPanel HorizontalAlignment="Center">
+                <TextBlock>Название услуги</TextBlock>
+                <TextBox x:Name="TBoxTitle" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center">
+                <TextBlock>Цена услуги</TextBlock>
+                <TextBox x:Name="TBoxCost" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" />
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center">
+                <TextBlock>Время выполнения</TextBlock>
+                <TextBox x:Name="TBoxDuration" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" />
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center">
+                <TextBlock>Описание услуги</TextBlock>
+                <TextBox x:Name="TBoxDescription" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center">
+                <TextBlock>Скидка услуги</TextBlock>
+                <TextBox x:Name="TBoxDiscount" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" />
+            </StackPanel>
 
-            <TextBox x:Name="TBoxTitle" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="TBoxCost" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" />
-            <TextBox x:Name="TBoxDuration" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" />
-            <TextBox x:Name="TBoxDescription" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="TBoxDiscount" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" />
-            <StackPanel>
-                <Image Source="{Binding}" Width="100" x:Name="ServiceImage"/>
-                <Image x:Name="ImageService" Width="100"/>
+            <StackPanel HorizontalAlignment="Center">
                 <Button x:Name="BtnSelectImage" Click="BtnSelectImageClick" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="200" Height="40" Content="Выбор изображения&#xA;"/>
             </StackPanel>
 
         </UniformGrid>
-
+        <StackPanel Grid.Column="0" Margin="10">
+            <Image Source="{Binding}" x:Name="ServiceImage"/>
+            <Image x:Name="ImageService"/>
+        </StackPanel>
 
     </Grid>
 </Page>

@@ -32,7 +32,7 @@
             <TextBox Name="TBoxSearch" Width="150" Margin="5" TextChanged="TBoxSearchTextChanged"/>
         </StackPanel>
         <TextBlock Grid.Row="1" Style="{StaticResource BlockCommon}" Width="auto" FontWeight="Bold" Name="BlockRecords"/>
-        <ListView Grid.Row="2" Name="LViewServices"
+        <ListView Grid.Row="2" Name="LViewServices" HorizontalContentAlignment="Stretch" HorizontalAlignment="Center"
             ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -44,7 +44,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="{StaticResource MainColor}"
-                            CornerRadius="15" Padding="5"
+                            CornerRadius="15" Padding="5" Width="300"
                             Background="{Binding BackColor}">
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -55,7 +55,7 @@
                             <Image Source="{Binding ServicePhoto.MainImage}" Width="100"/>
                             
                             <StackPanel Grid.Column="1">
-                                <TextBlock Style="{StaticResource BlockCommon}" Width="Auto" Text="{Binding Title}" HorizontalAlignment="Left"/>
+                                <TextBlock Style="{StaticResource BlockCommon}" Text="{Binding Title}" HorizontalAlignment="Left" TextWrapping="Wrap"/>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Width="auto"
                                                Style="{StaticResource BlockCommon}"

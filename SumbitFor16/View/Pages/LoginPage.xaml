@@ -10,7 +10,7 @@
 
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <UniformGrid >
+            <UniformGrid>
                 <TextBlock Style="{StaticResource BlockCommon}" Text="Логин: " ></TextBlock>
                 <TextBox Name="TBoxLogin">admin1</TextBox>
             </UniformGrid>
@@ -19,6 +19,8 @@
                 <PasswordBox Name="PBoxPassword" ></PasswordBox>
             </UniformGrid>
             <Button Name="BtnLogin" Click="BtnLoginClick" Content="Войти" HorizontalAlignment="Right"></Button>
+            
+            <Button Name="BtnReg" Click="BtnRegClick" Content="Зарегистрироваться" HorizontalAlignment="Right" Margin="0 15 0 0" Width="225"></Button>
         </StackPanel>
     </Grid>
 </Page>

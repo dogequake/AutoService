@@ -80,11 +80,11 @@ namespace SumbitFor16.View.Pages
                 var service = new Service
                 {
                     Title = TBoxTitle.Text,
-                   // Cost = decimal.Parse(TBoxCost.Text),
+                    //Cost = decimal.Parse(TBoxCost.Text),
                     Cost = 0,
                     DurationInSeconds = $"{int.Parse(TBoxDuration.Text) * 60} мин.",
                     Description = TBoxDescription.Text,
-                   // Discount = string.IsNullOrWhiteSpace(TBoxDiscount.Text)? 0 : double.Parse(TBoxDiscount.Text) / 100,
+                    //Discount = string.IsNullOrWhiteSpace(TBoxDiscount.Text)? 0 : double.Parse(TBoxDiscount.Text) / 100,
                     MainImagePath = imageId
                 };
                 db.context.Service.Add(service);
@@ -105,6 +105,5 @@ namespace SumbitFor16.View.Pages
             }
             NavigationService.GoBack();
         }
-
     }
 }

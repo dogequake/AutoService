@@ -1,0 +1,71 @@
+﻿<Page x:Class="SumbitFor16.View.Pages.RegPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SumbitFor16.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Регистрация">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.20*"/>
+        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0">
+            <UniformGrid>
+                <TextBlock>Введите фамилию: </TextBlock>
+                <TextBox x:Name="TBoxLastName"></TextBox>
+            </UniformGrid>
+            <UniformGrid>
+                <TextBlock>Введите имя:</TextBlock>
+                <TextBox x:Name="TBoxFirstName"></TextBox>
+            </UniformGrid>
+            <UniformGrid>
+                <TextBlock>Введите отчество:</TextBlock>
+                <TextBox x:Name="TBoxPatronymic"></TextBox>
+            </UniformGrid>
+            <UniformGrid>
+                <TextBlock>Выберите пол: </TextBlock>
+                <ComboBox x:Name="CBoxGenderCode">
+                    <TextBlock>Мужчина</TextBlock>
+                    <TextBlock>Женщина</TextBlock>
+                </ComboBox>
+            </UniformGrid>
+            <UniformGrid>
+                <TextBlock>Номер телефона:</TextBlock>
+                <TextBox x:Name="TBoxPhone"></TextBox>
+            </UniformGrid>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1">
+            <UniformGrid>
+                <TextBlock>Введите Email:</TextBlock>
+                <TextBox x:Name="TBoxEmail"></TextBox>
+            </UniformGrid>
+            <UniformGrid>
+                <TextBlock>Дата рождения:</TextBlock>
+                <DatePicker></DatePicker>
+            </UniformGrid>
+            <UniformGrid>
+                <TextBlock>Придумайте логин:</TextBlock>
+                <TextBox x:Name="TBoxLogin"></TextBox>
+            </UniformGrid>
+            <UniformGrid>
+                <TextBlock>Придумайте пароль:</TextBlock>
+                <TextBox x:Name="TBoxPassword"></TextBox>
+            </UniformGrid>
+            <UniformGrid>
+                <TextBlock>Повторите пароль:</TextBlock>
+                <TextBox x:Name="TBoxPasswordAgain"></TextBox>
+            </UniformGrid>
+        </StackPanel>
+        <UniformGrid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" >
+            <Button Content="Зарегистрироваться" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Height="50"/>
+        </UniformGrid>
+    </Grid>
+</Page>
