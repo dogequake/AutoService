@@ -14,6 +14,6 @@ namespace SumbitFor16
     /// </summary>
     public partial class App : Application
     {
-        public static Models.User CurrentUser = null;
+        public static Models.Client CurrentClient = null;
     }
 }

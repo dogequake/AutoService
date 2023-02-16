@@ -28,12 +28,12 @@ namespace SumbitFor16.View.Pages
         }
         private void BtnLoginClick(object sender, RoutedEventArgs e)
         {
-            User currentUser = db.context.User.Where(x => x.Login == TBoxLogin.Text).FirstOrDefault();
-            if (currentUser != null)
+            Client currentClient = db.context.Client.Where(x => x.Login == TBoxLogin.Text).FirstOrDefault();
+            if (currentClient != null)
             {
-                if (currentUser.Login == TBoxLogin.Text && currentUser.Password == PBoxPassword.Password)
+                if (currentClient.Login == TBoxLogin.Text && currentClient.Password == PBoxPassword.Password)
                 {
-                    App.CurrentUser = currentUser;
+                    App.CurrentClient = currentClient;
                     this.NavigationService.Navigate(new ServicePage());
                 }
                 else
@@ -50,6 +50,10 @@ namespace SumbitFor16.View.Pages
         private void BtnRegClick(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new RegPage());
+        }
+        private void ForgotPasswordMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("ВСПОМИНАЙ");
         }
     }
 }

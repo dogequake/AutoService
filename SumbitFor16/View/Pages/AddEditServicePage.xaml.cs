@@ -32,9 +32,9 @@ namespace SumbitFor16.View.Pages
                 TBoxDescription.Text = _currentService.Description;
                 TBoxDuration.Text = _currentService.DurationInSeconds;
                 string path = db.context.ServicePhoto.FirstOrDefault(x => x.ID == _currentService.MainImagePath).PhotoPath;
-                Uri AddEditPhoto = new Uri(path);
+                //Uri AddEditPhoto = new Uri(path);
 
-                ServiceImage.Source = new BitmapImage(AddEditPhoto);
+                //ServiceImage.Source = new BitmapImage(AddEditPhoto);
             }
           
         }

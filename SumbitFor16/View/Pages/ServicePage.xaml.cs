@@ -33,7 +33,7 @@ namespace SumbitFor16.View.Pages
             ComboDiscount.SelectedIndex = 0;
             ComboSortBy.SelectedIndex = 0;
             //1-admin 2-user
-            if (App.CurrentUser.RoleId == 1)
+            if (App.CurrentClient.RoleId == 1)
             {
                 BtnAddService.Visibility = Visibility.Visible;
             }
@@ -123,6 +123,11 @@ namespace SumbitFor16.View.Pages
         private void TBoxSearchTextChanged(object sender, TextChangedEventArgs e)
         {
             UpdateService();
+        }
+
+        private void BtnAccountClick(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new AccountPage());
         }
     }
 }

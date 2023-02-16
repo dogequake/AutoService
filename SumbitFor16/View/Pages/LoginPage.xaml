@@ -17,6 +17,7 @@
             <UniformGrid >
                 <TextBlock Style="{StaticResource BlockCommon}" Text="Пароль: "></TextBlock>
                 <PasswordBox Name="PBoxPassword" ></PasswordBox>
+                <Label x:Name="ForgotPassword" MouseDoubleClick="ForgotPasswordMouseDoubleClick">Забыл пароль?</Label>
             </UniformGrid>
             <Button Name="BtnLogin" Click="BtnLoginClick" Content="Войти" HorizontalAlignment="Right"></Button>
             

@@ -27,6 +27,9 @@
           <Property Name="Email" Type="nvarchar" MaxLength="255" />
           <Property Name="RegistrationDate" Type="date" />
           <Property Name="PhotoPath" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="RoleId" Type="int" />
         </EntityType>
         <EntityType Name="ClientService">
           <Key>
@@ -133,14 +136,6 @@
           <Property Name="ClientID" Type="int" Nullable="false" />
           <Property Name="TagID" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="Login" />
-          </Key>
-          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="RoleId" Type="int" Nullable="false" />
-        </EntityType>
         <Association Name="FK_AttachedProduct_Product">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
           <End Role="AttachedProduct" Type="Self.AttachedProduct" Multiplicity="*" />
@@ -174,6 +169,18 @@
             </Principal>
             <Dependent Role="Client">
               <PropertyRef Name="GenderCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="RoleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -299,18 +306,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_User_Role">
-          <End Role="Role" Type="Self.Role" Multiplicity="1" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="RoleId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="Хранилище AUTOSERVICEModelContainer">
           <EntitySet Name="AttachedProduct" EntityType="Self.AttachedProduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
@@ -326,7 +321,6 @@
           <EntitySet Name="ServicePhoto" EntityType="Self.ServicePhoto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tag" EntityType="Self.Tag" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TagOfClient" EntityType="Self.TagOfClient" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_AttachedProduct_Product" Association="Self.FK_AttachedProduct_Product">
             <End Role="Product" EntitySet="Product" />
             <End Role="AttachedProduct" EntitySet="AttachedProduct" />
@@ -337,6 +331,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Client_Gender" Association="Self.FK_Client_Gender">
             <End Role="Gender" EntitySet="Gender" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Role" Association="Self.FK_Client_Role">
+            <End Role="Role" EntitySet="Role" />
             <End Role="Client" EntitySet="Client" />
           </AssociationSet>
           <AssociationSet Name="FK_ClientService_Client" Association="Self.FK_ClientService_Client">
@@ -379,10 +377,6 @@
             <End Role="Tag" EntitySet="Tag" />
             <End Role="TagOfClient" EntitySet="TagOfClient" />
           </AssociationSet>
-          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
-            <End Role="Role" EntitySet="Role" />
-            <End Role="User" EntitySet="User" />
-          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -401,9 +395,12 @@
           <EntitySet Name="Service" EntityType="AUTOSERVICEModel.Service" />
           <EntitySet Name="ServicePhoto" EntityType="AUTOSERVICEModel.ServicePhoto" />
           <EntitySet Name="Tag" EntityType="AUTOSERVICEModel.Tag" />
-          <EntitySet Name="User" EntityType="AUTOSERVICEModel.User" />
           <AssociationSet Name="FK_Client_Gender" Association="AUTOSERVICEModel.FK_Client_Gender">
             <End Role="Gender" EntitySet="Gender" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Role" Association="AUTOSERVICEModel.FK_Client_Role">
+            <End Role="Role" EntitySet="Role" />
             <End Role="Client" EntitySet="Client" />
           </AssociationSet>
           <AssociationSet Name="FK_ClientService_Client" Association="AUTOSERVICEModel.FK_ClientService_Client">
@@ -434,10 +431,6 @@
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductSale" EntitySet="ProductSale" />
           </AssociationSet>
-          <AssociationSet Name="FK_User_Role" Association="AUTOSERVICEModel.FK_User_Role">
-            <End Role="Role" EntitySet="Role" />
-            <End Role="User" EntitySet="User" />
-          </AssociationSet>
           <AssociationSet Name="FK_Service_ServicePhoto" Association="AUTOSERVICEModel.FK_Service_ServicePhoto">
             <End Role="ServicePhoto" EntitySet="ServicePhoto" />
             <End Role="Service" EntitySet="Service" />
@@ -465,7 +458,11 @@
           <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="RegistrationDate" Type="DateTime" Precision="0" />
           <Property Name="PhotoPath" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="Int32" />
           <NavigationProperty Name="Gender" Relationship="AUTOSERVICEModel.FK_Client_Gender" FromRole="Client" ToRole="Gender" />
+          <NavigationProperty Name="Role" Relationship="AUTOSERVICEModel.FK_Client_Role" FromRole="Client" ToRole="Role" />
           <NavigationProperty Name="ClientService" Relationship="AUTOSERVICEModel.FK_ClientService_Client" FromRole="Client" ToRole="ClientService" />
           <NavigationProperty Name="Tag" Relationship="AUTOSERVICEModel.TagOfClient" FromRole="Client" ToRole="Tag" />
         </EntityType>
@@ -553,7 +550,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="User" Relationship="AUTOSERVICEModel.FK_User_Role" FromRole="Role" ToRole="User" />
+          <NavigationProperty Name="Client" Relationship="AUTOSERVICEModel.FK_Client_Role" FromRole="Role" ToRole="Client" />
         </EntityType>
         <EntityType Name="Service">
           <Key>
@@ -586,15 +583,6 @@
           <Property Name="Color" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Client" Relationship="AUTOSERVICEModel.TagOfClient" FromRole="Tag" ToRole="Client" />
         </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="Login" />
-          </Key>
-          <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="RoleId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Role" Relationship="AUTOSERVICEModel.FK_User_Role" FromRole="User" ToRole="Role" />
-        </EntityType>
         <Association Name="FK_Client_Gender">
           <End Type="AUTOSERVICEModel.Gender" Role="Gender" Multiplicity="0..1" />
           <End Type="AUTOSERVICEModel.Client" Role="Client" Multiplicity="*" />
@@ -604,6 +592,18 @@
             </Principal>
             <Dependent Role="Client">
               <PropertyRef Name="GenderCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Role">
+          <End Type="AUTOSERVICEModel.Role" Role="Role" Multiplicity="0..1" />
+          <End Type="AUTOSERVICEModel.Client" Role="Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="RoleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -691,18 +691,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_User_Role">
-          <End Type="AUTOSERVICEModel.Role" Role="Role" Multiplicity="1" />
-          <End Type="AUTOSERVICEModel.User" Role="User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="RoleId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Service_ServicePhoto">
           <End Type="AUTOSERVICEModel.ServicePhoto" Role="ServicePhoto" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -725,7 +713,7 @@
           <End Type="AUTOSERVICEModel.Client" Role="Client" Multiplicity="*" />
           <End Type="AUTOSERVICEModel.Tag" Role="Tag" Multiplicity="*" />
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -734,6 +722,9 @@
           <EntitySetMapping Name="Client">
             <EntityTypeMapping TypeName="AUTOSERVICEModel.Client">
               <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
                 <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -852,15 +843,6 @@
                 <ScalarProperty Name="Color" ColumnName="Color" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="User">
-            <EntityTypeMapping TypeName="AUTOSERVICEModel.User">
-              <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

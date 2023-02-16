@@ -23,4 +23,5 @@
     <Style x:Key="BlockCommon" TargetType="TextBlock">
         <Setter Property="FontWeight" Value="Light"/>
     </Style>
+    
 </ResourceDictionary>

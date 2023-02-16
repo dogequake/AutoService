@@ -107,7 +107,7 @@ namespace SumbitFor16.Models
             get 
             {
                 //1-admin 2-user
-                if (App.CurrentUser.RoleId == 1)
+                if (App.CurrentClient.RoleId == 1)
                 {
                     return "Visible";
                 }
